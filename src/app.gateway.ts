@@ -9,6 +9,7 @@ import { Server, Socket } from 'socket.io';
 import { ContestService } from './contest/contest.service';
 
 @WebSocketGateway({
+  namespace: 'api',
   transports: ['websocket'],
   cors: {
     origin: '*',
@@ -18,7 +19,7 @@ export class AppGateway {
   @WebSocketServer()
   server: Server;
 
-  constructor(private readonly contestService: ContestService) {}
+  constructor(private readonly contestService: ContestService) { }
 
   handleConnection(client: Socket) {
     const contestId = client.handshake.query.contestId as string;
