@@ -54,6 +54,9 @@ export class Team {
   @Prop({ type: String })
   password: string;
 
+  @Prop({ type: String })
+  color: string;
+
   @Prop({ type: Number, default: 0 })
   totalScore: number;
 }

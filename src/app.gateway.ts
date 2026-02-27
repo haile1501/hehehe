@@ -19,7 +19,7 @@ export class AppGateway {
   @WebSocketServer()
   server: Server;
 
-  constructor(private readonly contestService: ContestService) { }
+  constructor(private readonly contestService: ContestService) {}
 
   handleConnection(client: Socket) {
     const contestId = client.handshake.query.contestId as string;
