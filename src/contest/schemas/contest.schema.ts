@@ -35,6 +35,9 @@ export class QuestionProgress {
 
   @Prop({ type: Array, default: [] })
   teamAnswers: TeamAnswer[];
+
+  @Prop({ type: String })
+  image: string;
 }
 
 @Schema({ id: false })
@@ -59,6 +62,9 @@ export class Team {
 
   @Prop({ type: Number, default: 0 })
   totalScore: number;
+
+  @Prop({ type: Number })
+  assignedRound2Question?: number;
 }
 
 @Schema({

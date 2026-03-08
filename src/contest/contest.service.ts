@@ -37,6 +37,7 @@ export class ContestService {
     contest.round1.questions = contestStructure.round1.questions.map((item) => {
       const question = new QuestionProgress();
       question.question = item.question;
+      question.image = item.image;
       question.choices = item.choices;
       question.correctAnswer = item.correctAnswer;
       question.time = item.time;
@@ -48,6 +49,7 @@ export class ContestService {
     contest.round2.questions = contestStructure.round2.questions.map((item) => {
       const question = new QuestionProgress();
       question.question = item.question;
+      question.image = item.image;
       question.choices = item.choices;
       question.correctAnswer = item.correctAnswer;
       question.time = item.time;
@@ -59,6 +61,7 @@ export class ContestService {
     contest.round3.questions = contestStructure.round3.questions.map((item) => {
       const question = new QuestionProgress();
       question.question = item.question;
+      question.image = item.image;
       question.choices = item.choices;
       question.correctAnswer = item.correctAnswer;
       question.time = item.time;
@@ -140,6 +143,9 @@ export class ContestService {
         }
 
         contest.currentState = 'question';
+        if (contest.currentRound === 2) {
+          contest.currentState = 'assign-question';
+        }
       } else {
         const teams = contest.teams;
         const question = round1.questions[round1.currentQuestion];
@@ -172,6 +178,8 @@ export class ContestService {
         contest.currentState = 'question';
         contest.currentRound = contest.currentRound + 1;
         contest.round3.currentQuestion = contest.round3.currentQuestion + 1;
+      } else if (contest.currentState === 'assign-question') {
+        contest.currentState = 'question';
       } else {
         contest.currentState = 'score-board';
       }

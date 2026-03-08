@@ -25,6 +25,9 @@ export class Question {
 
   @Prop({ required: true })
   time: number;
+
+  @Prop({ type: String })
+  image: string;
 }
 
 @Schema({ _id: false })
